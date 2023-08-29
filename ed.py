@@ -36,13 +36,11 @@ class LinkedList:
         node_aux.next = node
         self.length += 1
         
-    def insertPosisition(self, data, pos):
-        if pos > self.length:
-            return 'posição invalida'
+    def insertPosition(self, data, pos):
         node = Node(data)
         node_aux = self.head
         count = 0
-        while count < pos - 1:
+        while count < pos - 1 and node_aux.next != None:
             count +=1
             node_aux = node_aux.next
         node.next = node_aux.next
@@ -102,7 +100,7 @@ class LinkedList:
         position = 0
         while current.next != None:
             if data > current.data and data <= current.next.data:
-                return self.insertPosisition(data, position + 1)
+                return self.insertPosition(data, position + 1)
                 
             position += 1
             current = current.next
@@ -118,12 +116,12 @@ lista_encadeada.insertBeginning(8)
 lista_encadeada.insertEnd(15)
 lista_encadeada.insertBeginning(1)
 #lista_encadeada.insertInOrder(10)
-lista_encadeada.insertPosisition(5,9)
-
+#lista_encadeada.insertPosition(5,9)
+lista_encadeada.insertInOrder(13)
 lista_encadeada.printList()
-print('\n')
-print(lista_encadeada.fullForce(5))
-print(lista_encadeada.fastslow(5))
-print('\n')
-print('\n')
-lista_encadeada.printarinverso()
+#print('\n')
+#print(lista_encadeada.fullForce(5))
+#print(lista_encadeada.fastslow(5))
+#print('\n')
+#print('\n')
+#lista_encadeada.printarinverso()
