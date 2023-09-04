@@ -104,8 +104,40 @@ class LinkedList:
                 
             position += 1
             current = current.next
+
+    def removeAllK(self,data):
+        previous = self.head
+        current = self.head.next
+        if self.head.data == data:
+            while self.head.data == data:
+                self.head = self.head.next
+                previous = previous.next
+                current = current.next
+        while current.next is not None:
+            if current.data == data:
+                previous.next = current.next
+                current = current.next
+                self.length -= 1
+            else:
+                current = current.next
+                previous = previous.next
+
     
-    
+    def removeAtPosition(self, pos):
+        if pos == 0 :
+            self.head = self.head.next
+        count = 0
+        previous = self.head
+        current = self.head.next
+        while current.next is not None:
+            if pos == count:
+                previous.next = current.next
+                return
+            current = current.next
+            previous = previous.next
+            count += 1
+        previous.next = None
+        return
     
 
 lista_encadeada = LinkedList()
@@ -114,10 +146,11 @@ lista_encadeada.insertBeginning(9)
 lista_encadeada.insertBeginning(8)
 lista_encadeada.insertBeginning(8)
 lista_encadeada.insertEnd(15)
-lista_encadeada.insertBeginning(1)
+# lista_encadeada.insertBeginning(1)
 #lista_encadeada.insertInOrder(10)
-#lista_encadeada.insertPosition(5,9)
+# lista_encadeada.insertPosition(5,4)
 lista_encadeada.insertInOrder(13)
+lista_encadeada.removeAllK(8)
 lista_encadeada.printList()
 #print('\n')
 #print(lista_encadeada.fullForce(5))
