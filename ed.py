@@ -22,7 +22,7 @@ class LinkedList:
     def printList(self):
         node_aux = self.head
         while node_aux != None:
-            print(node_aux.data)
+            print(node_aux.data, end=' | ')
             node_aux = node_aux.next
 
     def getLength(self):
@@ -139,6 +139,25 @@ class LinkedList:
         previous.next = None
         return
     
+    #questão da prova inverte pares.
+    def switchPar(self):
+        current = self.head
+        while current.next is not None:
+            aux = current.data
+            current.data = current.next.data
+            current.next.data = aux
+            current = current.next.next
+    
+    #remove iguais numa lista ordenada
+    def removeAllEqual(self):
+        current = self.head
+        while current.next is not None:
+            if current.data == current.next.data:
+                current.next = current.next.next
+            else:
+                current = current.next
+        
+        
 
 lista_encadeada = LinkedList()
 lista_encadeada.insertBeginning(12)
@@ -150,7 +169,14 @@ lista_encadeada.insertEnd(15)
 #lista_encadeada.insertInOrder(10)
 # lista_encadeada.insertPosition(5,4)
 lista_encadeada.insertInOrder(13)
-lista_encadeada.removeAllK(8)
+# lista_encadeada.removeAllK(8)
+lista_encadeada.insertEnd(18)
+lista_encadeada.printList()
+print()
+lista_encadeada.switchPar()
+lista_encadeada.printList()
+lista_encadeada.removeAllEqual()
+print()
 lista_encadeada.printList()
 #print('\n')
 #print(lista_encadeada.fullForce(5))
