@@ -156,13 +156,40 @@ class LinkedList:
                 current.next = current.next.next
             else:
                 current = current.next
-        
-        
+
+    def removerParesLevy(self):
+        while self.head.data % 2 == 0:
+            self.head = self.head.next
+        fast = self.head.next
+        previous = self.head
+        while fast is not None:
+            if fast.data % 2 == 0:
+                previous.next = fast.next
+                fast = fast.next
+            else:
+                previous = previous.next
+                fast = fast.next
+
+    def printListaTest(self):
+        current = self.head
+        while current.next is not None:
+            print(current.data)
+            current = current.next
+        print(current.data)    
+
+    def sumAllImpar(self):
+        sum = 0
+        current = self.head
+        while current is not None:
+            if current.data % 2 == 1:
+                sum += current.data
+            current = current.next
+        return sum    
 
 lista_encadeada = LinkedList()
 lista_encadeada.insertBeginning(12)
 lista_encadeada.insertBeginning(9)
-lista_encadeada.insertBeginning(8)
+# lista_encadeada.insertBeginning(8)
 lista_encadeada.insertBeginning(8)
 lista_encadeada.insertEnd(15)
 # lista_encadeada.insertBeginning(1)
@@ -171,13 +198,15 @@ lista_encadeada.insertEnd(15)
 lista_encadeada.insertInOrder(13)
 # lista_encadeada.removeAllK(8)
 lista_encadeada.insertEnd(18)
-lista_encadeada.printList()
-print()
-lista_encadeada.switchPar()
-lista_encadeada.printList()
-lista_encadeada.removeAllEqual()
-print()
-lista_encadeada.printList()
+lista_encadeada.removerParesLevy()
+lista_encadeada.printListaTest()
+
+# print()
+# lista_encadeada.switchPar()
+# lista_encadeada.printList()
+# lista_encadeada.removeAllEqual()
+# print()
+# lista_encadeada.printList()
 #print('\n')
 #print(lista_encadeada.fullForce(5))
 #print(lista_encadeada.fastslow(5))
