@@ -42,6 +42,25 @@ class Stack():
                 if pop == '{' and deli != '}':
                     return False
         return delimiters.isEmpty()
+
+    @staticmethod
+    def infixToPosfix(expression):
+        stack = Stack()
+        for char in expression:
+            if char not in '+-/*':
+                stack.push(char)
+            else:
+                pop1 = stack.pop()
+                pop2 = stack.pop()
+                if char == '+':
+                    stack.push(int(pop1) + int(pop2))
+                if char == '-':
+                    stack.push(int(pop1) - int(pop2))
+                if char == '*':
+                    stack.push(int(pop1) * int(pop2))
+                if char == '/':
+                    stack.push(int(pop1) // int(pop2))
+        return stack.pop()
         
     
 pilha = Stack()
