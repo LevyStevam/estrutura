@@ -61,6 +61,31 @@ class Stack():
                 if char == '/':
                     stack.push(int(pop1) // int(pop2))
         return stack.pop()
+    
+    @staticmethod
+    def makeCalc(num1,num2,op):
+        if op == '+':
+            return int(num1) + int(num2)
+        if op == '-':
+            return int(num1) - int(num2)
+        if op == '*':
+            return int(num1) * int(num2)
+        if op == '/':
+            return int(num1) // int(num2)
+        
+    @staticmethod
+    def calculePos(expression):
+        pilha = Stack()
+        for char in expression:
+            if char in '+-/*':
+                num11 = pilha.pop()
+                num22 = pilha.pop()
+                result =  pilha.makeCalc(num22,num11,char)
+                pilha.push(result)
+            else:
+                pilha.push(char)
+        return pilha.pop()
+                
         
     
 pilha = Stack()
@@ -68,3 +93,4 @@ pilha.push(12)
 pilha.push(13)
 print(pilha.peek())
 print(pilha.verifyDelimiter('[(axb)]'))
+print(pilha.calculePos('123*+5-'))
